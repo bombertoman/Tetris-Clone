@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3sb7ic83tkkd"]
+
+[ext_resource type="Script" uid="uid://8udsqjijm3ur" path="res://board.gd" id="1_p0ybc"]
+[ext_resource type="FontFile" uid="uid://c73yoq5cgtxpo" path="res://SyneMono-Regular.ttf" id="2_psm7c"]
+[ext_resource type="Script" uid="uid://4dekw8hhrl30" path="res://ui.gd" id="3_8l818"]
+
+[sub_resource type="Theme" id="Theme_psm7c"]
+default_font = ExtResource("2_psm7c")
+default_font_size = 24
+
+[node name="Board" type="Node2D"]
+z_index = 10
+script = ExtResource("1_p0ybc")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_psm7c")
+script = ExtResource("3_8l818")
+
+[node name="LabelGameOver" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 209.0
+offset_right = 732.0
+offset_bottom = 403.0
+text = "GAME OVER
+<Space> to restart"
+
+[node name="LabelScore" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 54.0
+offset_right = 443.0
+offset_bottom = 84.0
+text = "Score: 0"
+
+[node name="VBoxNextPiece" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 88.0
+offset_right = 485.0
+offset_bottom = 195.0
+
+[node name="SpriteNextPiece" type="Sprite2D" parent="UI/VBoxNextPiece"]
+texture_filter = 1
+position = Vector2(60.97, 60.495)
+scale = Vector2(23.33, 23.33)
+
+[node name="LabelNextPiece" type="Label" parent="UI/VBoxNextPiece"]
+layout_mode = 2
+text = "Next piece:"

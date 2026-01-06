@@ -1,0 +1,12 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+/ios/
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono/C# specific ignores (if using C# version)
+.mono/
+data_*/
+mono_crash.*.json
