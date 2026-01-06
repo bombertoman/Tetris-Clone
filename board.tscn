@@ -1,54 +1,117 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3sb7ic83tkkd"]
+[gd_scene load_steps=10 format=3 uid="uid://b3sb7ic83tkkd"]
 
 [ext_resource type="Script" uid="uid://8udsqjijm3ur" path="res://board.gd" id="1_p0ybc"]
 [ext_resource type="FontFile" uid="uid://c73yoq5cgtxpo" path="res://SyneMono-Regular.ttf" id="2_psm7c"]
 [ext_resource type="Script" uid="uid://4dekw8hhrl30" path="res://ui.gd" id="3_8l818"]
+[ext_resource type="Texture2D" uid="uid://bdcw5ya8qp2qk" path="res://touch-btns/left.png" id="4_jqgjh"]
+[ext_resource type="Texture2D" uid="uid://yy73jgvfhb11" path="res://touch-btns/rotate.png" id="5_mgc1s"]
+[ext_resource type="Texture2D" uid="uid://bo337m0xi2vdj" path="res://touch-btns/right.png" id="6_rq8yp"]
+[ext_resource type="Texture2D" uid="uid://gf4148jfh4wu" path="res://touch-btns/accelerate.png" id="7_tngv2"]
+[ext_resource type="Texture2D" uid="uid://bgmncbqvg1mse" path="res://touch-btns/harddrop.png" id="8_c4ttu"]
 
 [sub_resource type="Theme" id="Theme_psm7c"]
 default_font = ExtResource("2_psm7c")
 default_font_size = 24
 
-[node name="Board" type="Node2D"]
+[node name="Game" type="Node2D"]
 z_index = 10
+
+[node name="Board" type="Node2D" parent="."]
+position = Vector2(60, 150)
 script = ExtResource("1_p0ybc")
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="Board"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_psm7c")
 script = ExtResource("3_8l818")
 
-[node name="LabelGameOver" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 335.0
-offset_top = 209.0
-offset_right = 732.0
-offset_bottom = 403.0
+[node name="LabelGameOver" type="Label" parent="Board/UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = 304.0
+offset_right = 297.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.16, 0.16, 0.16, 0.654902)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 30
 text = "GAME OVER
 <Space> to restart"
+horizontal_alignment = 1
 
-[node name="LabelScore" type="Label" parent="UI"]
+[node name="LabelScore" type="Label" parent="Board/UI"]
 layout_mode = 0
-offset_left = 338.0
-offset_top = 54.0
-offset_right = 443.0
-offset_bottom = 84.0
+offset_left = -54.0
+offset_top = -129.0
+offset_right = 51.0
+offset_bottom = -99.0
 text = "Score: 0"
 
-[node name="VBoxNextPiece" type="VBoxContainer" parent="UI"]
+[node name="VBoxNextPiece" type="VBoxContainer" parent="Board/UI"]
 layout_mode = 0
-offset_left = 340.0
-offset_top = 88.0
-offset_right = 485.0
-offset_bottom = 195.0
+offset_left = 186.0
+offset_top = -130.0
+offset_right = 331.0
+offset_bottom = -23.0
 
-[node name="SpriteNextPiece" type="Sprite2D" parent="UI/VBoxNextPiece"]
+[node name="SpriteNextPiece" type="Sprite2D" parent="Board/UI/VBoxNextPiece"]
 texture_filter = 1
-position = Vector2(60.97, 60.495)
-scale = Vector2(23.33, 23.33)
+position = Vector2(65, 75)
+scale = Vector2(30, 30)
 
-[node name="LabelNextPiece" type="Label" parent="UI/VBoxNextPiece"]
+[node name="LabelNextPiece" type="Label" parent="Board/UI/VBoxNextPiece"]
 layout_mode = 2
 text = "Next piece:"
+
+[node name="MobileControls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -33.0
+offset_right = 7.0
+offset_bottom = 40.0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(59.00001, 773)
+scale = Vector2(0.5416667, 0.5416667)
+texture_normal = ExtResource("4_jqgjh")
+action = "ui_left"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(134.00003, 773)
+scale = Vector2(0.5416667, 0.5416667)
+texture_normal = ExtResource("5_mgc1s")
+action = "ui_select"
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(209.00005, 773)
+scale = Vector2(0.5416667, 0.5416667)
+texture_normal = ExtResource("6_rq8yp")
+action = "ui_right"
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(284, 773)
+scale = Vector2(0.5416667, 0.5416667)
+texture_normal = ExtResource("8_c4ttu")
+action = "ui_down"
+
+[node name="TouchScreenButton5" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(360, 773)
+scale = Vector2(0.5416667, 0.5416667)
+texture_normal = ExtResource("7_tngv2")
+action = "ui_up"

@@ -94,6 +94,12 @@ var all_types = [
 ]
 
 func _ready() -> void:
+	# Center horizontally
+	var screen_width = get_viewport_rect().size.x
+	var board_width = columns * cell_size
+	position.x = (screen_width - board_width) / 2
+	position.y = 150
+	
 	for x in range(columns):
 		occupied_cells.append([])
 		for y in range(rows):

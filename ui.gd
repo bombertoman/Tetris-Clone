@@ -12,7 +12,7 @@ func _ready() -> void:
 func update_score(score):
 	score_label.text = "Score: " + str(score)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not is_game_over:
 		return
 	if Input.is_action_just_pressed("ui_select"):
