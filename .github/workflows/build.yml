@@ -2,7 +2,7 @@ name: "Godot Web Export"
 on: push
 
 env:
-  GODOT_VERSION: 4.3 # CHANGE THIS to match your exact version (e.g. 4.2.1 or 4.3)
+  GODOT_VERSION: 4.5.1
   EXPORT_NAME: index # The name of the html file
 
 jobs:
@@ -10,7 +10,7 @@ jobs:
     name: Web Export
     runs-on: ubuntu-latest
     container:
-      image: barichello/godot-ci:4.3 # Make sure this tag matches your version
+      image: barichello/godot-ci:4.5.1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
