@@ -96,7 +96,7 @@ action = "ui_left"
 position = Vector2(134.00003, 773)
 scale = Vector2(0.5416667, 0.5416667)
 texture_normal = ExtResource("5_mgc1s")
-action = "ui_select"
+action = "ui_accept"
 
 [node name="TouchScreenButton3" type="TouchScreenButton" parent="MobileControls"]
 position = Vector2(209.00005, 773)
